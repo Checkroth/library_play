@@ -1,9 +1,6 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -40,16 +37,10 @@ public class Patron extends Model {
 	@javax.persistence.Column(columnDefinition="char(2)")
 	public String state;
 
-	@javax.persistence.Column(columnDefinition="char(9)")
+	@javax.persistence.Column(columnDefinition="char(5)")
 	public Integer zip;
 
 	@Required
-	@javax.persistence.Column(columnDefinition="varchar(64)")
-	public String home_library;
-
 	@ManyToOne
-	@Required
-	@javax.persistence.Column(columnDefinition="varchar(64)")
 	public Library library;
-
 }

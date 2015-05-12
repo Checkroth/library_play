@@ -4,9 +4,11 @@ package models;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name = "Checked_Out")
 public class CheckedOut extends Model {
 
 //  create table Checked_Out (
@@ -21,23 +23,16 @@ public class CheckedOut extends Model {
 //  );
 
     @Id
-
-    @javax.persistence.Column(columnDefinition="char(10)")
+    @OneToMany(mappedBy = "card_num")
     public Patron patron;
 
+    // Takes care of both call_num and copy_num
     @Required
-    @javax.persistence.Column(columnDefinition="varchar(32)")
+    @Id
+    @OneToOne(mappedBy = "call_num, copy_num")
     public Media media;
-
-    @Required
-    @javax.persistence.Column(columnDefinition="integer")
-    public Integer copy_number;
 
     @Required
     @javax.persistence.Column(columnDefinition="date")
     public Date due_date;
-
-
-
-
 }

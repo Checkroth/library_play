@@ -1,9 +1,6 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -22,30 +19,17 @@ public class Fine extends Model {
 //		foreign key (call_num, copy_num) references Media(call_num, copy_num)
 //	);
 
-	//TODO: Need to more appropriately study this model and how I could construct it with the play framework
-
-
 	// Comp Key 1
 	@Id
-	@javax.persistence.Column(columnDefinition="char(10)")
-	public String patron_id;
+	@OneToMany(mappedBy = "card_num")
+	public Patron patron;
 
 	// Comp Key 2
+	@Id
 	@Required
-	@javax.persistence.Column(columnDefinition="varchar(32)")
-	public String call_num;
-
-	// Comp Key 2
-	@Required
-	@javax.persistence.Column(columnDefinition="integer")
-	public Integer copy_num;
+	@OneToMany(mappedBy = "call_num, card_num")
+	public Media media;
 
 	@javax.persistence.Column(columnDefinition="integer")
 	public Integer amount;
-
-
-
-
-	@ManyToOne
-	public Media media;
 }

@@ -62,12 +62,7 @@ public class Media extends Model {
 	@javax.persistence.Column(columnDefinition="varchar(16)")
 	public String media_type;
 
-
-
-
 	@ManyToOne
 	@Required
-	@javax.persistence.Column(columnDefinition="varchar(64)")
 	public Library library;
-
 }

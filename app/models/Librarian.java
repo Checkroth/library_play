@@ -1,9 +1,6 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -38,23 +35,6 @@ public class Librarian extends Model {
 	@javax.persistence.Column(columnDefinition="varchar(64)")
 	public String title;
 
-	@Required
-	@javax.persistence.Column(columnDefinition="varchar(64)")
-	public String home_library;
-
-
-
-
-
-	// TODO Relational field using library as a varchar for foreign key
-	// This is probably not right
-	@OneToOne
-	@javax.persistence.Column(columnDefinition="varchar(64)")
+	@ManyToOne
 	public Library library;
-
-
 }
-    // TODO mappedBy is the name of the field in NewEn that contains the foreign key
-	// This should go in Library.java model?
-    // @OneToOne(mappedBy = "Librarian")
-    // public List<Librarian> librarians;

@@ -27,30 +27,18 @@ public class Library extends Model {
 	public String name;
 
 	@Required
-	@javax.persistence.Column(columnDefinition="varchar(64)")
+	@javax.persistence.Column(columnDefinition="varchar(64) not null")
 	public String street_num;
 
 	@Required
-	@javax.persistence.Column(columnDefinition="varchar(32)")
+	@javax.persistence.Column(columnDefinition="varchar(32) not null")
 	public String city;
 
 	@Required
-	@javax.persistence.Column(columnDefinition="char(2)")
+	@javax.persistence.Column(columnDefinition="char(2) not null")
 	public String state;
 
 	@Required
-	@javax.persistence.Column(columnDefinition="char(9)")
+	@javax.persistence.Column(columnDefinition="char(5) not null")
 	public Integer zip;
-
-
-
-
-    @OneToOne(mappedBy = "Librarian")
-    public List<Librarian> librarians;
-
-    @OneToMany(mappedBy = "Patron")
-    public List<Patron> patrons;
-
-    @OneToMany(mappedBy = "Media")
-    public List<Media> media;
 }
