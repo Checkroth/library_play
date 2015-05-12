@@ -27,6 +27,8 @@ POST	/fine						controllers.Application.addFine()
 
 GET 	/fine 		 				controllers.Application.getFines()
 
+GET 	/media_status				controllers.Application.getMediaStatus()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

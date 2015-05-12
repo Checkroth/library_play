@@ -36,7 +36,7 @@
 		</tr>
 
 		<tr>
-		  <form action="@routes.Application.getLibraries()/" method="get">
+		  <form action="@routes.Application.getLibraries()" method="get">
 			<td colspan=2><button>View Libraries JSON</button></td>
 			</form>
 		</tr>
@@ -83,19 +83,19 @@
 		</tr>
 		<tr>
 			<td>Title</td>
-			<td><input type="text" name="street_num" /></td>
+			<td><input type="text" name="title" /></td>
 		</tr>
 		<tr>
 			<td>Author</td>
-			<td><input type="text" name="city" /></td>
+			<td><input type="text" name="author" /></td>
 		</tr>
 		<tr>
 			<td>Publisher</td>
-			<td><input type="text" name="state" /></td>
+			<td><input type="text" name="publisher" /></td>
 		</tr>
 		<tr>
 			<td>City</td>
-			<td><input type="text" name="zip"  /></td>
+			<td><input type="text" name="city"  /></td>
 		<tr>
 		<tr>
 			<td>Year</td>
@@ -122,14 +122,160 @@
 			<td>--------</td>
 			<td>----------------</td>
 		</tr>
-<!-- 
+
 		<tr>
 		  <form action="@routes.Application.getMedia()/" method="get">
+		  	<td>Library Name</td>
 		  	<td><input type="text" name="library"></td>
-			<td colspan=2><button>View Media JSON</button></td>
+			<td colspan=2><button>View Media</button></td>
 			</form>
-		</tr> -->
+		</tr>
 	</table>	
+
+
+	<table>
+		<tr>
+			<form action="@routes.Application.addPatron()" method="post">
+			<td>Card Number</td>
+			<td><input type="text" name="card_num" /></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="name" /></td>
+		</tr>
+		<tr>
+			<td>Street</td>
+			<td><input type="text" name="street_num" /></td>
+		</tr>
+		<tr>
+			<td>City</td>
+			<td><input type="text" name="city" /></td>
+		</tr>
+		<tr>
+			<td>State</td>
+			<td><input type="text" name="state"  /></td>
+		<tr>
+		<tr>
+			<td>Zip</td>
+			<td><input type="text" name="zip" /></td>
+		</tr>
+		<tr>
+			<td>Library</td>
+			<td><input type="text" name="library" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>Add Patron</button></td>
+			</form>
+		</tr>
+		<tr>
+			<td>--------</td>
+			<td>----------------</td>
+		</tr>
+
+		<tr>
+		  <form action="@routes.Application.getPatrons()/" method="get">
+		  	<td>Library</td>
+		  	<td><input type="text" name="library"></td>
+			<td colspan=2><button>View Patron JSON</button></td>
+			</form>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<form action="@routes.Application.checkOut()" method="post">
+			<td>Patron Name</td>
+			<td><input type="text" name="name" /></td>
+		</tr>
+		<tr>
+			<td>Media Call Number</td>
+			<td><input type="text" name="street_num" /></td>
+		</tr>
+		<tr>
+			<td>Wait Number</td>
+			<td><input type="text" name="wait_num" /></td>
+		<tr>	
+			<td></td>
+			<td><button>Check Out</button></td>
+			</form>
+		</tr>
+		<tr>
+			<td>--------</td>
+			<td>----------------</td>
+		</tr>
+	</table>	
+
+	<table>
+		<tr>
+			<form action="@routes.Application.addFine()" method="post">
+			<td>Patron Card Number</td>
+			<td><input type="text" name="patron" /></td>
+		</tr>
+		<tr>
+			<td>Media Call Number</td>
+			<td><input type="text" name="media" /></td>
+		</tr>
+		<tr>
+			<td>Fine Amount</td>
+			<td><input type="text" name="amount" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>Add Fine</button></td>
+			</form>
+		</tr>
+		<tr>
+			<td>--------</td>
+			<td>----------------</td>
+		</tr>
+	</table>	
+	
+
+	<table>
+		<tr>
+			<form action="@routes.Application.getFines()" method="get">
+			<td>Patron Card Number</td>
+			<td><input type="text" name="card_num" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>View Fines</button></td>
+			</form>
+		</tr>
+	</table>
+
+
+	<table>
+		<tr>
+			<form action="@routes.Application.getLibrarians()" method="get">
+			<td>Library Name</td>
+			<td><input type="text" name="library" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>View Librarians</button></td>
+			</form>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<form action="@routes.Application.getMediaStatus()" method="get">
+			<td>Media Name</td>
+			<td><input type="text" name="media" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>View Media Status</button></td>
+			</form>
+		</tr>
+	</table>
+	
+	
+
+
+
 <!-- 	
 	<div id="students"></div>
 

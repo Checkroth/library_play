@@ -47,6 +47,10 @@ public class Application extends Controller {
     
     
     public static Result getLibraries() {
+        // Could potentially return a list with buttons that show this library's 'media' or 'patrons' or 'librarians'
+        // This would make the front page significantly cleaner
+        // This would also involve looping through every library and building the HTML forms with hidden fields
+        // From within this controller, which is hideous
     	List <Library> libraries = new Model.Finder(int.class, Library.class).all();
         return ok(toJson(libraries));
     }
@@ -75,14 +79,15 @@ public class Application extends Controller {
     public static Result getMedia() {
     	DynamicForm data = Form.form().bindFromRequest();
     	String library = data.get("library");
+        // Filter media by relationship with library
     	List <Media> media = new Model.Finder(int.class, Media.class).all();
         return ok(toJson(media));
     }
 
     public static Result checkOut() {
-    	DynamicForm data = Form.form().bindFromRequest();
-    	String call_num = data.get("call_num");
-        return ok();
+        Reserved reserved_media = Form.form(Reserved.class).bindFromRequest().get();
+        reserved_media.save();
+        return redirect(routes.Application.index());
     }
 
     public static Result addPatron() {
@@ -94,10 +99,26 @@ public class Application extends Controller {
     public static Result getPatrons() {
     	DynamicForm data = Form.form().bindFromRequest();
     	String library = data.get("library");
+        // Filter list by relationship with library
     	List <Patron> patrons = new Model.Finder(int.class, Patron.class).all();
         return ok(toJson(patrons));
     }
 
+    public static Result getMediaStatus() {
+        DynamicForm data = Form.form().bindFromRequest();
+        String media = data.get("media");
+        // Need to get the media matching the name entered
+        // If doesn't exist, return "Selected media does not exist"
+        // If available return "media is avilable"
+        // If not available return "media is reserved"
+        if(true){
+            return ok(media + "is Reserved");
+        }
+        else {
+            return ok(media + "is Available");
+        }
+
+    }
     
 //     public static Result addStudent() {
 //     	Student student = Form.form(Student.class).bindFromRequest().get();
