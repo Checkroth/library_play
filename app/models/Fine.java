@@ -32,4 +32,6 @@ public class Fine extends Model {
 
 	@javax.persistence.Column(columnDefinition="integer")
 	public Integer amount;
+
+    public static Finder<String, Fine> find = new Model.Finder(String.class, Fine.class);
 }

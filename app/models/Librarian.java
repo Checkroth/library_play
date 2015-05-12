@@ -37,4 +37,7 @@ public class Librarian extends Model {
 
 	@ManyToOne
 	public Library library;
+    
+    public static Finder<String, Librarian> find = new Model.Finder(String.class, Librarian.class);
+
 }

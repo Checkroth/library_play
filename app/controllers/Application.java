@@ -34,7 +34,7 @@ public class Application extends Controller {
     	DynamicForm data = Form.form().bindFromRequest();
     	String card_number = data.get("card_num");
     	// Need to find a way to just get the fines related to employee with this card number
-    	List <Fine> fines = new Model.Finder(int.class, Fine.class).all();
+    	List<Fine> fines = Fine.find.where().ilike("patron", card_number).findList();
         return ok(toJson(fines));
     }
 
@@ -51,7 +51,7 @@ public class Application extends Controller {
         // This would make the front page significantly cleaner
         // This would also involve looping through every library and building the HTML forms with hidden fields
         // From within this controller, which is hideous
-    	List <Library> libraries = new Model.Finder(int.class, Library.class).all();
+    	List<Library> libraries = new Model.Finder(int.class, Library.class).all();
         return ok(toJson(libraries));
     }
 
@@ -63,10 +63,13 @@ public class Application extends Controller {
     }
     
     public static Result getLibrarians() {
-    	DynamicForm data = Form.form().bindFromRequest();
-    	String library = data.get("library");
-    	List <Librarian> librarians = new Model.Finder(int.class, Librarian.class).all();
-        // List <Librarian> librarians = Librarian.all();
+        DynamicForm data = Form.form().bindFromRequest();
+        String library = data.get("library");
+
+        List<Librarian> librarians = Librarian.find.where().ilike("library", library).findList();
+
+    	// List<Librarian> librarians = new Model.Finder(String.class, Librarian.class).all();
+        // List<Librarian> librarians = Librarian.all();
      	return ok(toJson(librarians));
     }
 
@@ -80,7 +83,7 @@ public class Application extends Controller {
     	DynamicForm data = Form.form().bindFromRequest();
     	String library = data.get("library");
         // Filter media by relationship with library
-    	List <Media> media = new Model.Finder(int.class, Media.class).all();
+    	List<Media> media = Media.find.where().ilike("library", library).findList();
         return ok(toJson(media));
     }
 
@@ -100,23 +103,27 @@ public class Application extends Controller {
     	DynamicForm data = Form.form().bindFromRequest();
     	String library = data.get("library");
         // Filter list by relationship with library
-    	List <Patron> patrons = new Model.Finder(int.class, Patron.class).all();
+    	List<Patron> patrons = Patron.find.where().ilike("library", library).findList();
         return ok(toJson(patrons));
     }
 
     public static Result getMediaStatus() {
-        DynamicForm data = Form.form().bindFromRequest();
-        String media = data.get("media");
-        // Need to get the media matching the name entered
-        // If doesn't exist, return "Selected media does not exist"
-        // If available return "media is avilable"
-        // If not available return "media is reserved"
-        if(true){
-            return ok(media + "is Reserved");
-        }
-        else {
-            return ok(media + "is Available");
-        }
+        return ok("test");
+        // DynamicForm data = Form.form().bindFromRequest();
+        // String media = data.get("media");
+        // try {
+        //     Media found_media = Media.find.where().like("call_num", media);
+        // }
+        // catch (Exception e){
+        //     return ok("No media with that ID exists");
+        // }
+
+        // if(found_media.available){
+        //     return ok(media + " is Available");
+        // }
+        // else {
+        //     return ok(media + " is Reserved");
+        // }
 
     }
     

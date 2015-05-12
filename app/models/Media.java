@@ -65,4 +65,7 @@ public class Media extends Model {
 	@ManyToOne
 	@Required
 	public Library library;
+
+    public static Finder<String, Media> find = new Model.Finder(String.class, Media.class);
+
 }

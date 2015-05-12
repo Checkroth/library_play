@@ -43,4 +43,7 @@ public class Patron extends Model {
 	@Required
 	@ManyToOne
 	public Library library;
+
+    public static Finder<String, Patron> find = new Model.Finder(String.class, Patron.class);
+
 }
