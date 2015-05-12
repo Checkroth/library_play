@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Media;
+// import models.Media;
 import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
@@ -12,7 +12,7 @@ import java.util.List;
 
 import static play.libs.Json.toJson;
 
-public class Application extends Controller {
+public class Media extends Controller {
     
     public static Result addMedia() {
     	Media media = Form.form(Media.class).bindFromRequest().get();
@@ -20,9 +20,13 @@ public class Application extends Controller {
         return redirect(routes.Application.index());
     }
     
-    public static Result getMedia() {
+    public static Result getMedia(String library) {
     	List <Media> media = new Model.Finder(int.class, Media.class).all();
         return ok(toJson(media));
+    }
+
+    public static Result checkOut(String media) {
+        return ok();
     }
 
     // Functions to add:

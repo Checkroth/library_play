@@ -5,11 +5,28 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-POST    /student                    controllers.Application.addStudent()
+GET 	/libraries					controllers.Library.getLibraries()
 
-GET     /students                   controllers.Application.getStudents()
+POST	/library					controllers.Library.addLibrary()
 
-GET     /studentsTable              controllers.Application.studTab()
+GET 	/librarians/:library		controllers.Librarian.getLibrarians(library)
+
+POST	/librarian 					controllers.Librarian.addLibrarian()
+
+GET 	/patrons/:library			controllers.Patron.getPatrons(library)
+
+POST	/patron 					controllers.Patron.addPatron()
+
+GET 	/media/:library				controllers.Media.getMedia(library)
+
+POST	/media 						controllers.Media.addMedia()
+
+POST 	/checkout 					controllers.Media.checkOut(media)
+
+POST	/fine						controllers.Fine.addFine()
+
+GET 	/fine/:patron 				controllers.Fine.getFines(patron)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Patron;
+// import models.Patron;
 import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
@@ -12,7 +12,7 @@ import java.util.List;
 
 import static play.libs.Json.toJson;
 
-public class Application extends Controller {
+public class Patron extends Controller {
     
     public static Result addPatron() {
     	Patron patron = Form.form(Patron.class).bindFromRequest().get();
@@ -20,7 +20,7 @@ public class Application extends Controller {
         return redirect(routes.Application.index());
     }
     
-    public static Result getPatrons() {
+    public static Result getPatrons(String library) {
     	List <Patron> patrons = new Model.Finder(int.class, Patron.class).all();
         return ok(toJson(patrons));
     }

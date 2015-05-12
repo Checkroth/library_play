@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Librarian;
+// import models.Librarian;
 import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
@@ -12,7 +12,7 @@ import java.util.List;
 
 import static play.libs.Json.toJson;
 
-public class Application extends Controller {
+public class Librarian extends Controller {
 
     public static Result addLibrarian() {
     	Librarian librarian = Form.form(Librarian.class).bindFromRequest().get();
@@ -20,10 +20,13 @@ public class Application extends Controller {
         return redirect(routes.Application.index());
     }
     
-    public static Result getLibrarians() {
-    	List <Librarian> librarians = new Model.Finder(int.class, Librarian.class).all();
-        return ok(toJson(librarians));
+    public static Result getLibrarians(String library) {
+    	// List <Librarian> librarians = Librarian.findBy("library"=library);
+     //    return ok(toJson(librarians));
+        return ok();
     }
+
+
 
     // Functions to add:
     // Remove librarian

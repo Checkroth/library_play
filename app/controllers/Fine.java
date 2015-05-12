@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Fine;
+// import models.Fine;
 import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
@@ -12,15 +12,17 @@ import java.util.List;
 
 import static play.libs.Json.toJson;
 
-public class Application extends Controller {
+public class Fine extends Controller {
     
     public static Result addFine() {
+//      Student student = Form.form(Student.class).bindFromRequest().get();
+
     	Fine fine = Form.form(Fine.class).bindFromRequest().get();
     	fine.save();
         return redirect(routes.Application.index());
     }
     
-    public static Result getFines() {
+    public static Result getFines(String patron) {
     	List <Fine> fines = new Model.Finder(int.class, Fine.class).all();
         return ok(toJson(fines));
     }

@@ -1,5 +1,5 @@
 package controllers;
-import models.Library;
+// import models.Library;
 import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import static play.libs.Json.toJson;
 
-public class Application extends Controller {
+public class Library extends Controller {
 
     public static Result addLibrary() {
     	Library library = Form.form(Library.class).bindFromRequest().get();
@@ -28,5 +28,5 @@ public class Application extends Controller {
     // Get all librarians for a specific library
     // Get all media in a specific library
     // Remove a library? (Probably not necessary for the scope of this application
-    )
+    
 }

@@ -6,17 +6,28 @@
 	
 	<table>
 		<tr>
-			<form action="@routes.Application.addStudent()" method="post">
+			<form action="@routes.Library.addLibrary()" method="post">
 			<td>Name</td>
 			<td><input type="text" name="name" /></td>
 		</tr>
 		<tr>
-			<td>GPA</td>
-			<td><input type="text" name="gpa" /></td>
+			<td>Street Number</td>
+			<td><input type="text" name="street_num" /></td>
 		</tr>
 		<tr>
+			<td>City</td>
+			<td><input type="text" name="city" /></td>
+		</tr>
+		<tr>
+			<td>State (Two letter code)</td>
+			<td><input type="text" name="state" /></td>
+		</tr>
+		<tr>
+			<td>Zip</td>
+			<td><input type="text" name="zip"  /></td>
+		<tr>
 			<td></td>
-			<td><button>Add Student</button></td>
+			<td><button>Add Library</button></td>
 			</form>
 		</tr>
 		<tr>
@@ -25,17 +36,17 @@
 		</tr>
 
 		<tr>
-		  <form action="@routes.Application.getStudents()" method="get">
-			<td colspan=2><button>View Students Json</button></td>
+		  <form action="@routes.Library.getLibraries()" method="get">
+			<td colspan=2><button>View Libraries JSON</button></td>
 			</form>
 		</tr>
 	</table>
-	
+<!-- 	
 	<div id="students"></div>
 
 	<script>
 		document.getElementById('students').innerHTML = httpGet('/studentsTable');
 	</script>
-	
+	 -->
     
 }
