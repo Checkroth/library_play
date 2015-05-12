@@ -5,27 +5,27 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-GET 	/libraries					controllers.Library.getLibraries()
+GET 	/libraries					controllers.Application.getLibraries()
 
-POST	/library					controllers.Library.addLibrary()
+POST	/library					controllers.Application.addLibrary()
 
-GET 	/librarians/:library		controllers.Librarian.getLibrarians(library)
+GET 	/librarians					controllers.Application.getLibrarians()
 
-POST	/librarian 					controllers.Librarian.addLibrarian()
+POST	/librarian 					controllers.Application.addLibrarian()
 
-GET 	/patrons/:library			controllers.Patron.getPatrons(library)
+GET 	/patrons					controllers.Application.getPatrons()
 
-POST	/patron 					controllers.Patron.addPatron()
+POST	/patron 					controllers.Application.addPatron()
 
-GET 	/media/:library				controllers.Media.getMedia(library)
+GET 	/media						controllers.Application.getMedia()
 
-POST	/media 						controllers.Media.addMedia()
+POST	/media 						controllers.Application.addMedia()
 
-POST 	/checkout 					controllers.Media.checkOut(media)
+POST 	/checkout 					controllers.Application.checkOut()
 
-POST	/fine						controllers.Fine.addFine()
+POST	/fine						controllers.Application.addFine()
 
-GET 	/fine/:patron 				controllers.Fine.getFines(patron)
+GET 	/fine 		 				controllers.Application.getFines()
 
 
 # Map static resources from the /public folder to the /assets URL path

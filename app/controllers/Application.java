@@ -1,8 +1,14 @@
 package controllers;
 
-// import models.Student;
+import models.Fine;
+import models.Librarian;
+import models.Library;
+import models.Media;
+import models.Patron;
+import models.Reserved;
 import play.*;
 import play.data.Form;
+import play.data.DynamicForm;
 import play.db.ebean.Model;
 import play.mvc.*;
 
@@ -17,6 +23,81 @@ public class Application extends Controller {
     public static Result index() {
         return ok(index.render(""));
     }
+
+    public static Result addFine() {
+    	Fine fine = Form.form(Fine.class).bindFromRequest().get();
+    	fine.save();
+        return redirect(routes.Application.index());
+    }
+    
+    public static Result getFines() {
+    	DynamicForm data = Form.form().bindFromRequest();
+    	String card_number = data.get("card_num");
+    	// Need to find a way to just get the fines related to employee with this card number
+    	List <Fine> fines = new Model.Finder(int.class, Fine.class).all();
+        return ok(toJson(fines));
+    }
+
+
+    public static Result addLibrary() {
+    	Library library = Form.form(Library.class).bindFromRequest().get();
+    	library.save();
+        return redirect(routes.Application.index());
+    }
+    
+    
+    public static Result getLibraries() {
+    	List <Library> libraries = new Model.Finder(int.class, Library.class).all();
+        return ok(toJson(libraries));
+    }
+
+
+	public static Result addLibrarian() {
+        Librarian librarian = Form.form(Librarian.class).bindFromRequest().get();
+        librarian.save();
+        return redirect(routes.Application.index());
+    }
+    
+    public static Result getLibrarians() {
+    	DynamicForm data = Form.form().bindFromRequest();
+    	String library = data.get("library");
+    	List <Librarian> librarians = new Model.Finder(int.class, Librarian.class).all();
+        // List <Librarian> librarians = Librarian.all();
+     	return ok(toJson(librarians));
+    }
+
+    public static Result addMedia() {
+    	Media media = Form.form(Media.class).bindFromRequest().get();
+    	media.save();
+        return redirect(routes.Application.index());
+    }
+    
+    public static Result getMedia() {
+    	DynamicForm data = Form.form().bindFromRequest();
+    	String library = data.get("library");
+    	List <Media> media = new Model.Finder(int.class, Media.class).all();
+        return ok(toJson(media));
+    }
+
+    public static Result checkOut() {
+    	DynamicForm data = Form.form().bindFromRequest();
+    	String call_num = data.get("call_num");
+        return ok();
+    }
+
+    public static Result addPatron() {
+    	Patron patron = Form.form(Patron.class).bindFromRequest().get();
+    	patron.save();
+        return redirect(routes.Application.index());
+    }
+    
+    public static Result getPatrons() {
+    	DynamicForm data = Form.form().bindFromRequest();
+    	String library = data.get("library");
+    	List <Patron> patrons = new Model.Finder(int.class, Patron.class).all();
+        return ok(toJson(patrons));
+    }
+
     
 //     public static Result addStudent() {
 //     	Student student = Form.form(Student.class).bindFromRequest().get();
