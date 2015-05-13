@@ -41,4 +41,6 @@ public class Library extends Model {
 	@Required
 	@javax.persistence.Column(columnDefinition="char(5) not null")
 	public Integer zip;
+
+    public static Finder<String, Library> find = new Model.Finder(String.class, Library.class);
 }

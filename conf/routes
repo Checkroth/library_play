@@ -17,7 +17,7 @@ GET 	/patrons					controllers.Application.getPatrons()
 
 POST	/patron 					controllers.Application.addPatron()
 
-GET 	/media						controllers.Application.getMedia()
+POST 	/getmedia						controllers.Application.getMedia()
 
 POST	/media 						controllers.Application.addMedia()
 

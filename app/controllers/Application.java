@@ -7,6 +7,7 @@ import models.Media;
 import models.Patron;
 import models.Reserved;
 import play.*;
+import play.data.format.Formatters;
 import play.data.Form;
 import play.data.DynamicForm;
 import play.db.ebean.Model;
@@ -15,6 +16,8 @@ import play.mvc.*;
 import views.html.*;
 
 import java.util.List;
+import java.util.Locale;
+import java.text.ParseException;
 
 import static play.libs.Json.toJson;
 
@@ -57,6 +60,7 @@ public class Application extends Controller {
 
 
 	public static Result addLibrarian() {
+
         Librarian librarian = Form.form(Librarian.class).bindFromRequest().get();
         librarian.save();
         return redirect(routes.Application.index());
@@ -90,6 +94,7 @@ public class Application extends Controller {
     public static Result checkOut() {
         Reserved reserved_media = Form.form(Reserved.class).bindFromRequest().get();
         reserved_media.save();
+        // Need to also take the media and set it to 'reserved' or whatever (I think?)
         return redirect(routes.Application.index());
     }
 

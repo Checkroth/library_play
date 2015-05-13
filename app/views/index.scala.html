@@ -61,7 +61,7 @@
 		</tr>
 		<tr>
 			<td>Library</td>
-			<td><input type="text" name="library"  /></td>
+			<td><input type="text" name="library" /></td>
 		<tr>
 			<td></td>
 			<td><button>Add Librarian</button></td>
@@ -124,9 +124,9 @@
 		</tr>
 
 		<tr>
-		  <form action="@routes.Application.getMedia()/" method="get">
+		  <form action="@routes.Application.getMedia()" method="POST">
 		  	<td>Library Name</td>
-		  	<td><input type="text" name="library"></td>
+		  	<td><input type="text" name="library.name"></td>
 			<td colspan=2><button>View Media</button></td>
 			</form>
 		</tr>
