@@ -41,8 +41,10 @@ public class Patron extends Model {
 	public Integer zip;
 
 	@Required
-	@ManyToOne
-	public Library library;
+	public String library;
+	// @Required
+	// @ManyToOne
+	// public Library library;
 
     public static Finder<String, Patron> find = new Model.Finder(String.class, Patron.class);
 

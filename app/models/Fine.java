@@ -19,17 +19,29 @@ public class Fine extends Model {
 //		foreign key (call_num, copy_num) references Media(call_num, copy_num)
 //	);
 
-	// Comp Key 1
-	@OneToMany(mappedBy = "card_num")
-	public Patron patron;
-
-	// Comp Key 2
+	@Id
 	@Required
-	@OneToMany(mappedBy = "call_num, card_num")
-	public Media media;
+	@javax.persistence.Column(columnDefinition="char(10)")
+	public String patron_id;
+
+	@Required
+	@javax.persistence.Column(columnDefinition="varchar(32)")
+	public String call_num;
+
+	@Required
+	public Integer copy_num;
 
 	@javax.persistence.Column(columnDefinition="integer")
 	public Integer amount;
 
     public static Finder<String, Fine> find = new Model.Finder(String.class, Fine.class);
 }
+
+	// // Comp Key 1
+	// @OneToMany(mappedBy = "card_num")
+	// public Patron patron;
+
+	// // Comp Key 2
+	// @Required
+	// @OneToMany(mappedBy = "call_num, card_num")
+	// public Media media;

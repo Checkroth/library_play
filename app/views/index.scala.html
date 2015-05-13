@@ -36,7 +36,7 @@
 		</tr>
 
 		<tr>
-		  <form action="@routes.Application.getLibraries()" method="get">
+		  <form action="@routes.Application.getLibraries()" method="POST">
 			<td colspan=2><button>View Libraries JSON</button></td>
 			</form>
 		</tr>
@@ -122,14 +122,6 @@
 			<td>--------</td>
 			<td>----------------</td>
 		</tr>
-
-		<tr>
-		  <form action="@routes.Application.getMedia()" method="POST">
-		  	<td>Library Name</td>
-		  	<td><input type="text" name="library.name"></td>
-			<td colspan=2><button>View Media</button></td>
-			</form>
-		</tr>
 	</table>	
 
 
@@ -172,14 +164,6 @@
 			<td>--------</td>
 			<td>----------------</td>
 		</tr>
-
-		<tr>
-		  <form action="@routes.Application.getPatrons()/" method="get">
-		  	<td>Library</td>
-		  	<td><input type="text" name="library"></td>
-			<td colspan=2><button>View Patron JSON</button></td>
-			</form>
-		</tr>
 	</table>
 
 	<table>
@@ -210,11 +194,15 @@
 		<tr>
 			<form action="@routes.Application.addFine()" method="post">
 			<td>Patron Card Number</td>
-			<td><input type="text" name="patron" /></td>
+			<td><input type="text" name="patron_id" /></td>
 		</tr>
 		<tr>
 			<td>Media Call Number</td>
-			<td><input type="text" name="media" /></td>
+			<td><input type="text" name="call_num" /></td>
+		</tr>
+		<tr>
+			<td>Media Copy Number</td>
+			<td><input type="text" name="copy_num" /></td>
 		</tr>
 		<tr>
 			<td>Fine Amount</td>
@@ -234,13 +222,13 @@
 
 	<table>
 		<tr>
-			<form action="@routes.Application.getFines()" method="get">
+			<form action="@routes.Application.getFines()" method="POST">
 			<td>Patron Card Number</td>
 			<td><input type="text" name="card_num" /></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><button>View Fines</button></td>
+			<td><button>View Patron's Fines</button></td>
 			</form>
 		</tr>
 	</table>
@@ -248,7 +236,7 @@
 
 	<table>
 		<tr>
-			<form action="@routes.Application.getLibrarians()" method="get">
+			<form action="@routes.Application.getLibrarians()" method="POST">
 			<td>Library Name</td>
 			<td><input type="text" name="library" /></td>
 		</tr>
@@ -261,9 +249,9 @@
 
 	<table>
 		<tr>
-			<form action="@routes.Application.getMediaStatus()" method="get">
-			<td>Media Name</td>
-			<td><input type="text" name="media" /></td>
+			<form action="@routes.Application.getMediaStatus()" method="POST">
+			<td>Media Call Number</td>
+			<td><input type="text" name="call_num" /></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -272,6 +260,25 @@
 		</tr>
 	</table>
 	
+	<table>
+		<tr>
+		  <form action="@routes.Application.getPatrons()" method="POST">
+		  	<td>Library</td>
+		  	<td><input type="text" name="library"></td>
+			<td colspan=2><button>View Library's Patrons</button></td>
+			</form>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+		  <form action="@routes.Application.getMedia()" method="POST">
+		  	<td>Library Name</td>
+		  	<td><input type="text" name="library"></td>
+			<td colspan=2><button>View Library's Media</button></td>
+			</form>
+		</tr>
+	</table>
 	
 
 

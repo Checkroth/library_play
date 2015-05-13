@@ -17,7 +17,7 @@ create table Library (
 create table Librarian (
 	id_number	char(10) primary key,
 	name		varchar(128) not null,
-	dob		date not null,
+	dob		date,
 	title		varchar(64),
 	library		varchar(64) not null,
 	foreign key (library) references Library(name)

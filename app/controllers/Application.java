@@ -113,22 +113,22 @@ public class Application extends Controller {
     }
 
     public static Result getMediaStatus() {
-        return ok("test");
-        // DynamicForm data = Form.form().bindFromRequest();
-        // String media = data.get("media");
-        // try {
-        //     Media found_media = Media.find.where().like("call_num", media);
-        // }
-        // catch (Exception e){
-        //     return ok("No media with that ID exists");
-        // }
+        // return ok("test");
+        DynamicForm data = Form.form().bindFromRequest();
+        String media = data.get("call_num");
+        try {
+            Media found_media = Media.find.byId(media);
+        if(found_media.available){
+            return ok(media + " is Available");
+        }
+        else {
+            return ok(media + " is Reserved");
+        }
+        }
+        catch (Exception e){
+            return ok("No media with that ID exists");
+        }
 
-        // if(found_media.available){
-        //     return ok(media + " is Available");
-        // }
-        // else {
-        //     return ok(media + " is Reserved");
-        // }
 
     }
     

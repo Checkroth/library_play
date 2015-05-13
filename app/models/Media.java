@@ -28,8 +28,15 @@ public class Media extends Model {
 //		foreign key (library) references Library(name)
 //	);
 
-	@EmbeddedId
-	public MediaKey mediaKey;
+	// @EmbeddedId
+	// public MediaKey mediaKey;
+
+	@Id
+	@javax.persistence.Column(columnDefinition="varchar(32)")
+	public String call_num;
+
+	@Required
+	public Integer copy_num;
 
 	@javax.persistence.Column(columnDefinition="varchar(128)")
 	public String title;
@@ -52,9 +59,7 @@ public class Media extends Model {
 	@javax.persistence.Column(columnDefinition="varchar(16)")
 	public String media_type;
 
-	@ManyToOne
-	@Required
-	public Library library;
+	public String library;
 
     public static Finder<String, Media> find = new Model.Finder(String.class, Media.class);
 

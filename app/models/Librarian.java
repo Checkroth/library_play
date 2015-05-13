@@ -28,16 +28,14 @@ public class Librarian extends Model {
 	@javax.persistence.Column(columnDefinition="varchar(128)")
 	public String name;
 
-	@Required
 	@javax.persistence.Column(columnDefinition="date")
 	public Date dob;
 
 	@javax.persistence.Column(columnDefinition="varchar(64)")
 	public String title;
 
-	@ManyToOne
-	public Library library;
-    
+	public String library;
+
     public static Finder<String, Librarian> find = new Model.Finder(String.class, Librarian.class);
 
 }
