@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.*;
 
+import models.Keys.ReservedKey;
 import play.data.validation.Constraints.*;
 import play.db.ebean.Model;
 
@@ -18,17 +19,11 @@ public class Reserved extends Model {
 //      foreign key (call_num) references Media(call_num)
 //  );
 
-    @Id
-    @ManyToMany(mappedBy = "card_num")
-    public Patron patron;
-
-    @Id
-    @Required
-    @ManyToMany(mappedBy = "call_num")
-    public Media media;
+    @EmbeddedId
+    public ReservedKey reservedKey;
 
     @Id
     @Required
     @javax.persistence.Column(columnDefinition="integer")
-    public Integer wait_num;
+    public int wait_num;
 }

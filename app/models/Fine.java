@@ -20,12 +20,10 @@ public class Fine extends Model {
 //	);
 
 	// Comp Key 1
-	@Id
 	@OneToMany(mappedBy = "card_num")
 	public Patron patron;
 
 	// Comp Key 2
-	@Id
 	@Required
 	@OneToMany(mappedBy = "call_num, card_num")
 	public Media media;

@@ -1,11 +1,9 @@
 
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import models.Keys.MediaKey;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
@@ -30,11 +28,8 @@ public class Media extends Model {
 //		foreign key (library) references Library(name)
 //	);
 
-
-	// Comp Key 1
-	@Id
-	@javax.persistence.Column(columnDefinition="varchar(32)")
-	public String call_num;
+	@EmbeddedId
+	public MediaKey mediaKey;
 
 	@javax.persistence.Column(columnDefinition="varchar(128)")
 	public String title;
@@ -53,11 +48,6 @@ public class Media extends Model {
 
 	@javax.persistence.Column(columnDefinition="boolean")
 	public Boolean available;
-
-	// Comp Key 2
-	@Required
-	@javax.persistence.Column(columnDefinition="integer")
-	public Integer copy_num;
 
 	@javax.persistence.Column(columnDefinition="varchar(16)")
 	public String media_type;

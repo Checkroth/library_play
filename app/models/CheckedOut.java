@@ -22,17 +22,13 @@ public class CheckedOut extends Model {
 //      on delete cascade
 //  );
 
-    @Id
     @OneToMany(mappedBy = "card_num")
     public Patron patron;
 
     // Takes care of both call_num and copy_num
     @Required
-    @Id
-    @OneToOne(mappedBy = "call_num, copy_num")
     public Media media;
 
     @Required
-    @javax.persistence.Column(columnDefinition="date")
     public Date due_date;
 }
